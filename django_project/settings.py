@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'posts',
+    'accounts',
 
 ]
 
@@ -126,8 +127,19 @@ STATIC_URL= "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT =  os.path.join(BASE_DIR, "staticfiles")  # new
+STORAGES = {
+"default": {
+"BACKEND": "django.core.files.storage.FileSystemStorage",
+},
+"staticfiles": {
+"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+},
+}
 
 CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"] # new
+
+LOGIN_REDIRECT_URL = "posts_home"
+LOGOUT_REDIRECT_URL = "posts_home"
 
 STORAGES = {
 "default": {
