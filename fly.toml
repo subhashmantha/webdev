@@ -1,13 +1,16 @@
-# fly.toml app configuration file generated for webprojects on 2024-05-15T01:59:14-04:00
+# fly.toml app configuration file generated for intuitivemathclub on 2024-05-20T17:07:58-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'webprojects'
+app = 'intuitivemathclub'
 primary_region = 'mia'
 console_command = '/code/manage.py shell'
 
 [build]
+
+[deploy]
+  release_command = 'python manage.py migrate --noinput'
 
 [env]
   PORT = '8000'
@@ -23,7 +26,7 @@ console_command = '/code/manage.py shell'
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
-  cpus = 1
+  cpus = 2
 
 [[statics]]
   guest_path = '/code/static'
